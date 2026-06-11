@@ -87,8 +87,8 @@ def get_monthly_stats(
 
         mat_theoretical = project.requirements.material_demands
         mat_waste_rate: Dict[str, float] = {}
-        for mt, actual in mat_actual.items():
-            theoretical = mat_theoretical.get(mt, actual)
+        for mt, theoretical in mat_theoretical.items():
+            actual = mat_actual.get(mt, 0.0)
             if theoretical > 0:
                 mat_waste_rate[mt] = round((actual - theoretical) / theoretical, 4)
             else:
@@ -159,8 +159,8 @@ def get_project_stats(project_id: str):
 
     mat_theoretical = project.requirements.material_demands
     mat_waste_rate: Dict[str, float] = {}
-    for mt, actual in mat_actual.items():
-        theoretical = mat_theoretical.get(mt, actual)
+    for mt, theoretical in mat_theoretical.items():
+        actual = mat_actual.get(mt, 0.0)
         if theoretical > 0:
             mat_waste_rate[mt] = round((actual - theoretical) / theoretical, 4)
         else:
