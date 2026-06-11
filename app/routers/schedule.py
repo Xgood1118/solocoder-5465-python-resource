@@ -319,6 +319,7 @@ def run_scheduling(
     for inv in store.materials.values():
         inv.allocated_stock = 0.0
     store.material_allocations.clear()
+    store.conflicts.clear()
     return _run_greedy_scheduling(project_ids)
 
 
